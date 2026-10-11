@@ -118,3 +118,8 @@ p { margin: 0 0 1.1em; }
 .foot { background: #000; padding: 40px 0 28px; text-align: center; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--line); }
 .foot-logo { width: 200px; margin: 0 auto; }
 .foot-tag { font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; color: var(--gold); font-size: 1.2rem; }
+
+/* questions and answers */
+.faq { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.faq summary { cursor: pointer; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.4rem; color: var(--gold); font-weight: 700; }
+.faq p { margin: 10px 0 4px; }

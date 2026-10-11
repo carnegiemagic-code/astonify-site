@@ -5,6 +5,7 @@ Rebuilt Oct 2026 from the last good copy of the old WordPress site (Internet Arc
 updated to how the show is sold now: venues and private hosts hire it, in person (no more Zoom).
 Rules for copy here: no em dashes, no prices, never describe how a routine works.
 """
+import datetime
 import html
 import os
 
@@ -21,16 +22,32 @@ NAV = [("", "Home"), ("the-show/", "The Show"), ("christmas/", "Christmas"),
 SCHEMA = """<script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "TheaterEvent",
- "name": "The Astonify Show",
- "description": "An immersive evening of Victorian parlor magic and a theatrical seance, performed by Dean Carnegie for an intimate room of about fifty guests.",
- "url": "https://astonify.com/",
- "image": "https://astonify.com/img/og.jpg",
- "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
- "eventStatus": "https://schema.org/EventScheduled",
- "typicalAgeRange": "16-",
- "performer": {"@type": "Person", "name": "Dean Carnegie", "url": "https://carnegiemagic.com/"},
- "organizer": {"@type": "Organization", "name": "Carnegie Magic", "url": "https://carnegiemagic.com/", "telephone": "+1-703-404-8902", "email": "info@carnegiemagic.com"}
+ "@graph": [
+  {"@type": "WebSite", "@id": "https://astonify.com/#site", "url": "https://astonify.com/", "name": "The Astonify Show",
+   "publisher": {"@id": "https://carnegiemagic.com/#dean"}},
+  {"@type": "Person", "@id": "https://carnegiemagic.com/#dean", "name": "Dean Carnegie",
+   "alternateName": "Carnegie, The Artist of Mystery", "jobTitle": "Illusionist and magic historian",
+   "url": "https://carnegiemagic.com/", "image": "https://astonify.com/img/spirits-hero.jpg",
+   "homeLocation": {"@type": "City", "name": "Nashville, Tennessee"},
+   "sameAs": ["https://carnegiemagic.com/", "https://themagicdetective.com/", "https://magicdetectivepodcast.com/",
+              "https://art.carnegiemagic.com/", "https://www.youtube.com/@ArtistofMystery"]},
+  {"@type": "Service", "@id": "https://astonify.com/#show", "name": "The Astonify Show",
+   "alternateName": "Astonify", "serviceType": "Victorian parlor magic show and theatrical seance",
+   "description": "An immersive evening of Victorian parlor magic, thought reading and a theatrical seance, created and performed by Nashville illusionist Dean Carnegie for an intimate room of about fifty adults (ages 16 and up). Available all year for venues, museums, historic sites, clubs and private events.",
+   "url": "https://astonify.com/", "image": "https://astonify.com/img/og.jpg",
+   "provider": {"@id": "https://carnegiemagic.com/#dean"},
+   "areaServed": [{"@type": "City", "name": "Nashville, Tennessee"}, {"@type": "State", "name": "Tennessee"}, {"@type": "Country", "name": "United States"}],
+   "audience": {"@type": "PeopleAudience", "suggestedMinAge": 16},
+   "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Astonify shows", "itemListElement": [
+     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "The Astonify Show", "url": "https://astonify.com/the-show/"}},
+     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Astonify: The Ghosts of Christmas Past", "url": "https://astonify.com/christmas/",
+       "description": "A family friendly, Dickens inspired nineteenth century magic show for intimate December events."}}]},
+   "review": [
+     {"@type": "Review", "reviewBody": "Fun, Mystifying, Attention Grabbing! Our group thoroughly enjoyed seeing Dean Carnegie's Astonify Show.",
+      "author": {"@type": "Person", "name": "Erin Clark", "jobTitle": "Executive Director, Fauquier History Museum at the Old Jail"}},
+     {"@type": "Review", "reviewBody": "You gave a terrific performance, witty, colorful and fun as well as magical and confounding.",
+      "author": {"@type": "Person", "name": "Dr. Donn B. Murphy", "jobTitle": "President, The National Theatre, Washington D.C."}}]}
+ ]
 }
 </script>"""
 
@@ -58,6 +75,71 @@ REVIEWS = [
 ]
 
 VIDEO_ID = "URUODQ2wFEM"  # The Astonify Show by Dean Carnegie (Dean chose this one, Oct 10 2026)
+
+FAQ_SCHEMA = """<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is The Astonify Show?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "An immersive evening of Victorian parlor magic and thought reading, followed by a theatrical seance. It is created and performed by Dean Carnegie, a Nashville, Tennessee illusionist and magic historian, for an intimate room of about fifty guests."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who is it for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Adults. Astonify is designed for ages sixteen and up. In December there is a family friendly version, The Ghosts of Christmas Past."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will I have to go on stage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only if you want to. Some mysteries involve the whole room at once, and others need a guest or two to step forward. Nobody is pushed into anything."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is the seance real?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is a theatrical seance, performed in the style of the nineteenth century parlor and presented as entertainment. It is slightly spooky, and it is part of the Astonify evening."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is Astonify only in October?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The show is available all year, and different versions are offered through the year, including The Ghosts of Christmas Past in December."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where is it performed?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Astonify is based in Nashville, Tennessee, and is available to travel. Venues, museums, historic sites, clubs and private hosts hire the show for an evening in their own room."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I book it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Use the form on the Book the Show page, or call 703-404-8902. Tell us the date, the room and roughly how many guests."
+   }
+  }
+ ]
+}
+</script>"""
 
 SHOW_VIDEO_ID = "KJwryN8Tdjo"  # The Astonify Show Interview, on The Show page (Dean chose this one, Oct 10 2026)
 
@@ -253,6 +335,16 @@ SHOW = f"""
   and we will take it from there.</p>
   <div class="center">{video_block("../", SHOW_VIDEO_ID, "The Astonify Show: an interview on Victorian magic and the seance")}</div>
 </div></section>
+<section class="band dark"><div class="wrap narrow">
+  <h2 class="center">Questions people ask</h2>
+    <details class="faq"><summary>What is The Astonify Show?</summary><p>An immersive evening of Victorian parlor magic and thought reading, followed by a theatrical seance. It is created and performed by Dean Carnegie, a Nashville, Tennessee illusionist and magic historian, for an intimate room of about fifty guests.</p></details>
+    <details class="faq"><summary>Who is it for?</summary><p>Adults. Astonify is designed for ages sixteen and up. In December there is a family friendly version, The Ghosts of Christmas Past.</p></details>
+    <details class="faq"><summary>Will I have to go on stage?</summary><p>Only if you want to. Some mysteries involve the whole room at once, and others need a guest or two to step forward. Nobody is pushed into anything.</p></details>
+    <details class="faq"><summary>Is the seance real?</summary><p>It is a theatrical seance, performed in the style of the nineteenth century parlor and presented as entertainment. It is slightly spooky, and it is part of the Astonify evening.</p></details>
+    <details class="faq"><summary>Is Astonify only in October?</summary><p>No. The show is available all year, and different versions are offered through the year, including The Ghosts of Christmas Past in December.</p></details>
+    <details class="faq"><summary>Where is it performed?</summary><p>Astonify is based in Nashville, Tennessee, and is available to travel. Venues, museums, historic sites, clubs and private hosts hire the show for an evening in their own room.</p></details>
+    <details class="faq"><summary>How do I book it?</summary><p>Use the form on the Book the Show page, or call 703-404-8902. Tell us the date, the room and roughly how many guests.</p></details>
+</div></section>
 {cta("../")}
 """
 
@@ -373,23 +465,49 @@ NOT_FOUND = """
 """
 
 PAGES = [
-    ("", "The Astonify Show | Victorian Parlor Magic and a Seance with Dean Carnegie",
-     "Astonify is an immersive evening of Victorian parlor magic and a theatrical seance with Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue or private event.",
+    ("", "The Astonify Show | Victorian Magic and Seance Show, Nashville | Dean Carnegie",
+     "Astonify is an immersive Victorian magic and theatrical seance show by Nashville illusionist Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue, museum or private event.",
      HOME, SCHEMA, HOME_REDIRECT),
-    ("the-show/", "The Show | The Astonify Show",
+    ("the-show/", "The Show: Parlor Magic and a Theatrical Seance | Astonify, Nashville",
      "Stage magic, sleight of hand, mental mysteries and grand illusion, with a theatrical seance, performed close up for about fifty guests aged 16 and up.",
-     SHOW, "", ""),
-    ("christmas/", "The Ghosts of Christmas Past | A Dickens Magic Show | Astonify",
+     SHOW, FAQ_SCHEMA, ""),
+    ("christmas/", "The Ghosts of Christmas Past | Dickens Christmas Magic Show, Nashville | Astonify",
      "Astonify: The Ghosts of Christmas Past, a family friendly, Dickens inspired nineteenth century magic show for intimate December events.",
      CHRISTMAS, "", ""),
-    ("about/", "About Dean Carnegie | The Astonify Show",
+    ("about/", "About Dean Carnegie, Nashville Illusionist | The Astonify Show",
      "Dean Carnegie, The Artist of Mystery: Nashville illusionist, magic historian and painter. Thirty years, more than eight thousand shows.",
      ABOUT, "", ""),
-    ("book/", "Book the Show | The Astonify Show",
+    ("book/", "Book the Show | The Astonify Show, Nashville",
      "Bring The Astonify Show to your venue, museum, club or private evening. Ask about availability.",
      BOOK, "", ""),
     ("privacy/", "Privacy | The Astonify Show", "Privacy information for astonify.com.", PRIVACY, "", ""),
 ]
+
+
+# llms.txt: a plain summary for AI assistants (the emerging llmstxt.org convention)
+LLMS = f"""# The Astonify Show
+
+> An immersive evening of Victorian parlor magic, thought reading and a theatrical seance, created and performed
+> by Dean Carnegie, a Nashville, Tennessee illusionist and magic historian. Built for an intimate room of about
+> fifty guests, ages 16 and up. Available all year to venues, museums, historic sites, clubs and private hosts.
+
+- Performer: Dean Carnegie, "The Artist of Mystery". Thirty years as a full time performer, more than eight thousand
+  shows, performed for three U.S. Presidents, two evening performances at The National Theatre in Washington D.C.,
+  a TEDx speaker, host of a French television documentary on Houdini for Arte. Writes The Magic Detective and hosts
+  the Magic Detective Podcast.
+- Venues: The Underground Magic Theater (his own fifty seat theatre, Sterling, Virginia, 2001 to 2005), The Secret
+  Parlor Theatre (Chantilly, Virginia), Fauquier History Museum at the Old Jail (Warrenton, Virginia, twice).
+- December version: Astonify: The Ghosts of Christmas Past, a family friendly, Dickens inspired nineteenth century
+  magic show for intimate holiday events.
+- Booking: {SITE}book/ or {PHONE}, {EMAIL}
+
+## Pages
+- [Home]({SITE}): what the evening is, reviews, where it has played
+- [The Show]({SITE}the-show/): the show in detail, with common questions answered
+- [The Ghosts of Christmas Past]({SITE}christmas/): the December, family friendly version
+- [About Dean Carnegie]({SITE}about/): the performer
+- [Book the Show]({SITE}book/): enquiry form, phone and email
+"""
 
 
 def write(path, text):
@@ -414,8 +532,12 @@ def main():
           .replace('href="../', 'href="/').replace('src="../', 'src="/'))
     for old, new in OLD_PAGES.items():
         write(old + "index.html", redirect(new))
-    write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n")
-    urls = "".join(f"<url><loc>{SITE}{s}</loc></url>" for s, *_ in PAGES if s != "privacy/")
+    bots = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
+            "PerplexityBot", "Google-Extended", "Applebot", "Applebot-Extended"]
+    write("robots.txt", "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
+          + f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
+    write("llms.txt", LLMS)
+    urls = "".join(f"<url><loc>{SITE}{s}</loc><lastmod>{datetime.date.today()}</lastmod></url>" for s, *_ in PAGES if s != "privacy/")
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
     write("CNAME", "astonify.com\n")
     print("built", len(PAGES), "pages")

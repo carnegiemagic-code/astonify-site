@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Astonify Show | Victorian Parlor Magic and a Seance with Dean Carnegie</title>
-<meta name="description" content="Astonify is an immersive evening of Victorian parlor magic and a theatrical seance with Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue or private event.">
+<title>The Astonify Show | Victorian Magic and Seance Show, Nashville | Dean Carnegie</title>
+<meta name="description" content="Astonify is an immersive Victorian magic and theatrical seance show by Nashville illusionist Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue, museum or private event.">
 <link rel="canonical" href="https://astonify.com/">
 <link rel="icon" href="img/icon.jpg">
-<meta property="og:title" content="The Astonify Show | Victorian Parlor Magic and a Seance with Dean Carnegie">
-<meta property="og:description" content="Astonify is an immersive evening of Victorian parlor magic and a theatrical seance with Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue or private event.">
+<meta property="og:title" content="The Astonify Show | Victorian Magic and Seance Show, Nashville | Dean Carnegie">
+<meta property="og:description" content="Astonify is an immersive Victorian magic and theatrical seance show by Nashville illusionist Dean Carnegie, for an intimate room of about fifty adults. Book it for your venue, museum or private event.">
 <meta property="og:image" content="https://astonify.com/img/og.jpg">
 <meta property="og:url" content="https://astonify.com/">
 <meta property="og:type" content="website">
@@ -16,16 +16,32 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "TheaterEvent",
- "name": "The Astonify Show",
- "description": "An immersive evening of Victorian parlor magic and a theatrical seance, performed by Dean Carnegie for an intimate room of about fifty guests.",
- "url": "https://astonify.com/",
- "image": "https://astonify.com/img/og.jpg",
- "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
- "eventStatus": "https://schema.org/EventScheduled",
- "typicalAgeRange": "16-",
- "performer": {"@type": "Person", "name": "Dean Carnegie", "url": "https://carnegiemagic.com/"},
- "organizer": {"@type": "Organization", "name": "Carnegie Magic", "url": "https://carnegiemagic.com/", "telephone": "+1-703-404-8902", "email": "info@carnegiemagic.com"}
+ "@graph": [
+  {"@type": "WebSite", "@id": "https://astonify.com/#site", "url": "https://astonify.com/", "name": "The Astonify Show",
+   "publisher": {"@id": "https://carnegiemagic.com/#dean"}},
+  {"@type": "Person", "@id": "https://carnegiemagic.com/#dean", "name": "Dean Carnegie",
+   "alternateName": "Carnegie, The Artist of Mystery", "jobTitle": "Illusionist and magic historian",
+   "url": "https://carnegiemagic.com/", "image": "https://astonify.com/img/spirits-hero.jpg",
+   "homeLocation": {"@type": "City", "name": "Nashville, Tennessee"},
+   "sameAs": ["https://carnegiemagic.com/", "https://themagicdetective.com/", "https://magicdetectivepodcast.com/",
+              "https://art.carnegiemagic.com/", "https://www.youtube.com/@ArtistofMystery"]},
+  {"@type": "Service", "@id": "https://astonify.com/#show", "name": "The Astonify Show",
+   "alternateName": "Astonify", "serviceType": "Victorian parlor magic show and theatrical seance",
+   "description": "An immersive evening of Victorian parlor magic, thought reading and a theatrical seance, created and performed by Nashville illusionist Dean Carnegie for an intimate room of about fifty adults (ages 16 and up). Available all year for venues, museums, historic sites, clubs and private events.",
+   "url": "https://astonify.com/", "image": "https://astonify.com/img/og.jpg",
+   "provider": {"@id": "https://carnegiemagic.com/#dean"},
+   "areaServed": [{"@type": "City", "name": "Nashville, Tennessee"}, {"@type": "State", "name": "Tennessee"}, {"@type": "Country", "name": "United States"}],
+   "audience": {"@type": "PeopleAudience", "suggestedMinAge": 16},
+   "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Astonify shows", "itemListElement": [
+     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "The Astonify Show", "url": "https://astonify.com/the-show/"}},
+     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Astonify: The Ghosts of Christmas Past", "url": "https://astonify.com/christmas/",
+       "description": "A family friendly, Dickens inspired nineteenth century magic show for intimate December events."}}]},
+   "review": [
+     {"@type": "Review", "reviewBody": "Fun, Mystifying, Attention Grabbing! Our group thoroughly enjoyed seeing Dean Carnegie's Astonify Show.",
+      "author": {"@type": "Person", "name": "Erin Clark", "jobTitle": "Executive Director, Fauquier History Museum at the Old Jail"}},
+     {"@type": "Review", "reviewBody": "You gave a terrific performance, witty, colorful and fun as well as magical and confounding.",
+      "author": {"@type": "Person", "name": "Dr. Donn B. Murphy", "jobTitle": "President, The National Theatre, Washington D.C."}}]}
+ ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
