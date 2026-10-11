@@ -307,6 +307,7 @@ ABOUT = f"""
     <li>Spoke on the TEDx stage: <em>A Magician's Best Trick: Reality</em>.</li>
     <li>Hosted a French television documentary on Houdini for Arte.</li>
     <li>Ran his own fifty seat venue, The Underground Magic Theater, for four years.</li>
+    <li>The Old Warrenton Jail, Warrenton, Virginia, on two separate occasions.</li>
   </ul>
 </div></section>
 <section class="band"><div class="wrap narrow">
