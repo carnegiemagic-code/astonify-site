@@ -59,6 +59,8 @@ REVIEWS = [
 
 VIDEO_ID = "URUODQ2wFEM"  # The Astonify Show by Dean Carnegie (Dean chose this one, Oct 10 2026)
 
+SHOW_VIDEO_ID = "anZ8OkTRAwE"  # Astonify Ghost Story 4, on The Show page (Dean chose this one, Oct 10 2026)
+
 
 def page(slug, title, description, body, extra_head="", body_end=""):
     root = "../" if slug else ""
@@ -124,12 +126,12 @@ def reviews_block():
     return f'<section class="band"><div class="wrap"><h2 class="center">What people say</h2><div class="reviews">{cards}</div></div></section>'
 
 
-def video_block(root):
+def video_block(root, vid=VIDEO_ID, caption="The Astonify Show by Dean Carnegie"):
     return f"""<div class="video">
-      <div class="video-frame"><iframe src="https://www.youtube.com/embed/{VIDEO_ID}" title="The Astonify Show by Dean Carnegie" loading="lazy"
+      <div class="video-frame"><iframe src="https://www.youtube.com/embed/{vid}" title="{caption}" loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <span class="video-cap">The Astonify Show by Dean Carnegie</span>
+      <span class="video-cap">{caption}</span>
     </div>"""
 
 
@@ -248,7 +250,7 @@ SHOW = f"""
   spaces all suit it.</p>
   <p>Venues and hosts hire the show for the evening. Tell us the date, the room and roughly how many guests,
   and we will take it from there.</p>
-  <div class="center">{video_block("../")}</div>
+  <div class="center">{video_block("../", SHOW_VIDEO_ID, "An Astonify ghost story")}</div>
 </div></section>
 {cta("../")}
 """
