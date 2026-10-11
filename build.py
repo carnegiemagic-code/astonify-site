@@ -538,6 +538,7 @@ def main():
     write("robots.txt", "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
           + f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
     write("llms.txt", LLMS)
+    write("googlec8bfc5404bcb4d2b.html", "google-site-verification: googlec8bfc5404bcb4d2b.html")  # Search Console, carnegiemagic@gmail.com
     write(INDEXNOW_KEY + ".txt", INDEXNOW_KEY)
     urls = "".join(f"<url><loc>{SITE}{s}</loc><lastmod>{datetime.date.today()}</lastmod></url>" for s, *_ in PAGES if s != "privacy/")
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
