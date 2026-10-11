@@ -59,7 +59,7 @@ REVIEWS = [
 
 VIDEO_ID = "URUODQ2wFEM"  # The Astonify Show by Dean Carnegie (Dean chose this one, Oct 10 2026)
 
-SHOW_VIDEO_ID = "anZ8OkTRAwE"  # Astonify Ghost Story 4, on The Show page (Dean chose this one, Oct 10 2026)
+SHOW_VIDEO_ID = "KJwryN8Tdjo"  # The Astonify Show Interview, on The Show page (Dean chose this one, Oct 10 2026)
 
 
 def page(slug, title, description, body, extra_head="", body_end=""):
@@ -250,7 +250,7 @@ SHOW = f"""
   spaces all suit it.</p>
   <p>Venues and hosts hire the show for the evening. Tell us the date, the room and roughly how many guests,
   and we will take it from there.</p>
-  <div class="center">{video_block("../", SHOW_VIDEO_ID, "An Astonify ghost story")}</div>
+  <div class="center">{video_block("../", SHOW_VIDEO_ID, "The Astonify Show: an interview on Victorian magic and the seance")}</div>
 </div></section>
 {cta("../")}
 """
