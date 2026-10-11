@@ -14,6 +14,7 @@ PHONE = "703-404-8902"
 PHONE_LINK = "tel:+17034048902"
 EMAIL = "info@carnegiemagic.com"
 SITE = "https://astonify.com/"
+INDEXNOW_KEY = "0bfb664d1b504f5d803e57070e23e5fc"  # lets us tell Bing/IndexNow about new pages; the key file is published at the site root
 MAGO_FORM_ID = "e53a8875-e511-11ee-87d5-1a8035880eaa"  # same form as carnegiemagic.com/contact/
 
 NAV = [("", "Home"), ("the-show/", "The Show"), ("christmas/", "Christmas"),
@@ -537,6 +538,7 @@ def main():
     write("robots.txt", "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
           + f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
     write("llms.txt", LLMS)
+    write(INDEXNOW_KEY + ".txt", INDEXNOW_KEY)
     urls = "".join(f"<url><loc>{SITE}{s}</loc><lastmod>{datetime.date.today()}</lastmod></url>" for s, *_ in PAGES if s != "privacy/")
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
     write("CNAME", "astonify.com\n")
