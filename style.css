@@ -39,8 +39,8 @@ p { margin: 0 0 1.1em; }
 .top nav a:hover, .top nav a[aria-current] { color: var(--gold); border-bottom-color: var(--gold); }
 
 /* sections */
-.hero { background: #000; }
-.hero img { width: 100%; max-height: 72vh; object-fit: cover; }
+.hero { background: radial-gradient(ellipse at center, #3a2a1c 0%, #000 75%); padding: 24px 16px; }
+.hero img { width: auto; max-width: 100%; max-height: 88vh; margin: 0 auto; box-shadow: 0 12px 40px rgba(0,0,0,.7); }
 .intro { padding: 56px 0 40px; }
 .pagehead { padding: 64px 0 24px; background: radial-gradient(ellipse at top, #3a0d0f 0%, var(--bg) 70%); }
 .kicker { font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 1.35rem; color: var(--gold); margin: 0; letter-spacing: .02em; }
