@@ -57,7 +57,7 @@ REVIEWS = [
      "Audience member", "The Secret Parlor Theatre, Chantilly, Virginia"),
 ]
 
-VIDEO_ID = "iogvFyMVQO0"  # The Astonify Show, filmed from the audience at The Secret Parlor Theatre
+VIDEO_ID = "URUODQ2wFEM"  # The Astonify Show by Dean Carnegie (Dean chose this one, Oct 10 2026)
 
 
 def page(slug, title, description, body, extra_head="", body_end=""):
@@ -125,11 +125,12 @@ def reviews_block():
 
 
 def video_block(root):
-    return f"""<a class="video" href="https://www.youtube.com/watch?v={VIDEO_ID}" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/{VIDEO_ID}/hqdefault.jpg" alt="Watch a clip of The Astonify Show" loading="lazy" width="480" height="360">
-      <span class="play" aria-hidden="true"></span>
-      <span class="video-cap">Watch a clip, filmed from the audience at The Secret Parlor Theatre</span>
-    </a>"""
+    return f"""<div class="video">
+      <div class="video-frame"><iframe src="https://www.youtube.com/embed/{VIDEO_ID}" title="The Astonify Show by Dean Carnegie" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <span class="video-cap">The Astonify Show by Dean Carnegie</span>
+    </div>"""
 
 
 def cta(root, text="Bring Astonify to your venue, museum or private evening."):
@@ -354,7 +355,7 @@ PRIVACY = f"""
   <p>If you send an enquiry through the booking form, the details you type in (such as your name, email address,
   phone number and event details) are delivered to us by our booking form provider so that we can reply to you.
   We use them only to answer your enquiry and arrange your event.</p>
-  <p>Video links on this site go to YouTube, which has its own privacy policy.</p>
+  <p>Videos on this site are played by YouTube, which has its own privacy policy.</p>
   <p>To ask what we hold about you, or to have it deleted, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 </div></section>
 """
