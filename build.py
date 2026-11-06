@@ -10,8 +10,8 @@ import html
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PHONE = "703-404-8902"
-PHONE_LINK = "tel:+17034048902"
+PHONE = "615-549-5103"
+PHONE_LINK = "tel:+16155495103"
 EMAIL = "info@carnegiemagic.com"
 SITE = "https://astonify.com/"
 INDEXNOW_KEY = "0bfb664d1b504f5d803e57070e23e5fc"  # lets us tell Bing/IndexNow about new pages; the key file is published at the site root
@@ -135,7 +135,7 @@ FAQ_SCHEMA = """<script type="application/ld+json">
    "name": "How do I book it?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Use the form on the Book the Show page, or call 703-404-8902. Tell us the date, the room and roughly how many guests."
+    "text": "Use the form on the Book the Show page, or call 615-549-5103. Tell us the date, the room and roughly how many guests."
    }
   }
  ]
@@ -344,7 +344,7 @@ SHOW = f"""
     <details class="faq"><summary>Is the seance real?</summary><p>It is a theatrical seance, performed in the style of the nineteenth century parlor and presented as entertainment. It is slightly spooky, and it is part of the Astonify evening.</p></details>
     <details class="faq"><summary>Is Astonify only in October?</summary><p>No. The show is available all year, and different versions are offered through the year, including The Ghosts of Christmas Past in December.</p></details>
     <details class="faq"><summary>Where is it performed?</summary><p>Astonify is based in Nashville, Tennessee, and is available to travel. Venues, museums, historic sites, clubs and private hosts hire the show for an evening in their own room.</p></details>
-    <details class="faq"><summary>How do I book it?</summary><p>Use the form on the Book the Show page, or call 703-404-8902. Tell us the date, the room and roughly how many guests.</p></details>
+    <details class="faq"><summary>How do I book it?</summary><p>Use the form on the Book the Show page, or call 615-549-5103. Tell us the date, the room and roughly how many guests.</p></details>
 </div></section>
 {cta("../")}
 """
